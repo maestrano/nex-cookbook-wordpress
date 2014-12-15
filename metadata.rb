@@ -11,7 +11,7 @@ recipe "wordpress:configure", "Creates wordpress database and user, and configur
 
 depends "nginx"
 depends "database"
-depends "mysql", "~> 5.5.0"
+depends "mysql"
 depends "tar"
 depends "php-fpm"
 depends "php"
