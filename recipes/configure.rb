@@ -13,6 +13,8 @@ mysql_connection_info = {
 }
 
 # Cesar: Create wordpress database and user
+include_recipe "database"
+
 mysql_database db['name'] do
   connection  mysql_connection_info
   action      :create
