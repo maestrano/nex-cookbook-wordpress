@@ -10,7 +10,7 @@ recipe "wordpress", "Installs wordpress on the container"
 recipe "wordpress:configure", "Creates wordpress database and user, and configures wp-config"
 
 depends "nginx"
-depends "database"
+depends "database", '~> 2.3.1'
 depends "tar"
 depends "php-fpm"
 depends "php"
