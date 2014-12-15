@@ -1,5 +1,4 @@
 ::Chef::Recipe.send(:include, Opscode::OpenSSL::Password)
-::Chef::Recipe.send(:include, Wordpress::Helpers)
 
 node.set_unless['wordpress']['db']['pass'] = secure_password
 node.set_unless['wordpress']['db']['host'] = ENV["MYSQL_PORT_3306_TCP_ADDR"]
