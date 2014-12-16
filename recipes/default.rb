@@ -8,7 +8,7 @@
 #
 
 # Configure PHP-FPM
-include_recipe "php-fpm"
+include_recipe "php-fpm" 
 
 php_fpm_pool "wordpress" do
   listen "127.0.0.1:9000"
