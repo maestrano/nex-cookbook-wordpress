@@ -27,7 +27,7 @@ end
 template "#{node['nginx']['dir']}/sites-enabled/wordpress.conf" do
   source "nginx.conf.erb"
   variables(
-    :docroot          => node['wordpress']['dir'],
+    :docroot          => node['wordpress']['runtime_dir'],
     :server_name      => node['wordpress']['server_name'],
     :server_aliases   => node['wordpress']['server_aliases'],
     :server_port      => node['wordpress']['server_port']
@@ -64,5 +64,17 @@ else
     group node['wordpress']['install']['group']
     tar_flags [ '--strip-components 1' ]
     not_if { ::File.exists?("#{node['wordpress']['dir']}/index.php") }
+  end
+end
+
+directory node['wordpress']['runtime_dir'] do
+  action :create
+  recursive true
+  if platform_family?('windows')
+    rights :read, 'Everyone'
+  else
+    owner node['wordpress']['install']['user']
+    group node['wordpress']['install']['group']
+    mode  '00755'
   end
 end
