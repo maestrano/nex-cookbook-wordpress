@@ -46,7 +46,7 @@ node.set_unless['wordpress']['salt']['logged_in'] = secure_password
 node.set_unless['wordpress']['salt']['nonce'] = secure_password
 node.save unless Chef::Config[:solo]
 
-template "#{node['wordpress']['runtime_dir']}/wp-config.php" do
+template "#{node['wordpress']['dir']}/wp-config.php" do
   source 'wp-config.php.erb'
   mode node['wordpress']['config_perms']
   variables(
